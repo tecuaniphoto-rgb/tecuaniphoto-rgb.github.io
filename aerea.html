@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aérea · Tecuani Photo</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:    #0e0d0b; --paper: #f2ede6; --dim: rgba(242,237,230,0.45);
+      --accent:#c4602a; --serif: 'EB Garamond', Georgia, serif; --sans: 'Outfit', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--paper); font-family: var(--sans); font-weight: 300; overflow-x: hidden; cursor: none; }
+    #cur { position: fixed; pointer-events: none; z-index: 9999; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; transform: translate(-50%,-50%); transition: width .25s, height .25s; }
+    #cur-ring { position: fixed; pointer-events: none; z-index: 9998; width: 32px; height: 32px; border: 1px solid rgba(196,96,42,.5); border-radius: 50%; transform: translate(-50%,-50%); transition: left .08s ease, top .08s ease, width .3s, height .3s, border-color .3s; }
+    body.hovering #cur { width: 14px; height: 14px; }
+    body.hovering #cur-ring { width: 48px; height: 48px; border-color: var(--accent); }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; justify-content: space-between; align-items: center; padding: 2rem 3rem; mix-blend-mode: screen; }
+    .logo { font-family: var(--serif); font-size: .95rem; letter-spacing: .1em; text-transform: uppercase; color: var(--paper); text-decoration: none; opacity: .8; }
+    .nav-back { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--paper); text-decoration: none; opacity: .45; transition: opacity .2s; }
+    .nav-back:hover { opacity: 1; }
+    .page-header { padding: 10rem 3rem 4rem; border-bottom: 1px solid rgba(242,237,230,.06); }
+    .page-label { font-size: .62rem; letter-spacing: .3em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    .page-title { font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 5rem); font-weight: 400; line-height: 1.05; }
+    .page-title em { font-style: italic; color: var(--dim); }
+    .page-desc { font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--dim); margin-top: 1.2rem; max-width: 520px; line-height: 1.7; }
+    .gallery { padding: 4rem 3rem 6rem; columns: 3; column-gap: 4px; }
+    .gallery-item { break-inside: avoid; margin-bottom: 4px; overflow: hidden; position: relative; }
+    .gallery-item img { display: block; width: 100%; height: auto; transition: transform .5s ease; }
+    .gallery-item:hover img { transform: scale(1.03); }
+    footer { display: flex; justify-content: space-between; align-items: center; padding: 1.8rem 3rem; border-top: 1px solid rgba(242,237,230,.06); }
+    .footer-name { font-family: var(--serif); font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; opacity: .35; }
+    .footer-back { font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: var(--paper); text-decoration: none; opacity: .35; transition: opacity .2s; }
+    .footer-back:hover { opacity: 1; }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.on { opacity: 1; transform: none; }
+    @media (max-width: 860px) { nav { padding: 1.4rem 1.5rem; } .page-header { padding: 8rem 1.5rem 3rem; } .gallery { columns: 2; padding: 3rem 1.5rem; } footer { padding: 1.5rem; flex-direction: column; gap: .6rem; text-align: center; } }
+    @media (max-width: 480px) { .gallery { columns: 1; } }
+  </style>
+</head>
+<body>
+  <div id="cur"></div>
+  <div id="cur-ring"></div>
+  <nav>
+    <a href="index.html" class="logo">Tecuani Photo</a>
+    <a href="index.html" class="nav-back">← Volver</a>
+  </nav>
+  <header class="page-header">
+    <p class="page-label">03 · Galería</p>
+    <h1 class="page-title">Fotografía<br><em>Aérea</em></h1>
+    <p class="page-desc">Una perspectiva que revela lo que no se puede ver desde el suelo. Geografía, patrones humanos y naturaleza.</p>
+  </header>
+  <div class="gallery">
+    <div class="gallery-item reveal"><img src="aer-01.jpeg" alt="" loading="lazy"></div>
+    <div class="gallery-item reveal"><img src="aer-02.jpeg" alt="" loading="lazy"></div>
+    <div class="gallery-item reveal"><img src="aer-03.jpeg" alt="" loading="lazy"></div>
+    <div class="gallery-item reveal"><img src="aer-04.jpeg" alt="" loading="lazy"></div>
+    <div class="gallery-item reveal"><img src="aer-05.jpeg" alt="" loading="lazy"></div>
+    <div class="gallery-item reveal"><img src="aer-06.jpeg" alt="" loading="lazy"></div>
+    <div class="gallery-item reveal"><img src="aer-07.jpeg" alt="" loading="lazy"></div>
+    <div class="gallery-item reveal"><img src="aer-08.jpeg" alt="" loading="lazy"></div>
+    <div class="gallery-item reveal"><img src="aer-09.jpeg" alt="" loading="lazy"></div>
+    <div class="gallery-item reveal"><img src="aer-10.jpeg" alt="" loading="lazy"></div>
+  </div>
+  <footer>
+    <span class="footer-name">Tecuani Photo</span>
+    <a href="index.html" class="footer-back">← Volver al inicio</a>
+  </footer>
+  <script>
+    const cur = document.getElementById('cur');
+    const ring = document.getElementById('cur-ring');
+    document.addEventListener('mousemove', e => {
+      cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px';
+      setTimeout(() => { ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px'; }, 70);
+    });
+    document.querySelectorAll('a, .gallery-item').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+    });
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
