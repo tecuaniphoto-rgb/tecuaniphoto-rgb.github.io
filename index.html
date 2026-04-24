@@ -63,6 +63,39 @@
     }
     .nav-links a:hover { opacity: 1; }
 
+    /* HAMBURGER */
+    .hamburger {
+      display: none;
+      flex-direction: column; justify-content: center; gap: 5px;
+      width: 32px; height: 32px;
+      background: none; border: none; cursor: pointer; padding: 0;
+      z-index: 300;
+    }
+    .hamburger span {
+      display: block; width: 100%; height: 1px;
+      background: var(--paper); opacity: .7;
+      transition: transform .3s, opacity .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* MOBILE MENU */
+    .mobile-menu {
+      display: none;
+      position: fixed; inset: 0; z-index: 250;
+      background: rgba(14,13,11,.97);
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 2.5rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--serif); font-size: 2rem; font-weight: 400;
+      color: var(--paper); text-decoration: none; opacity: .6;
+      transition: opacity .2s;
+    }
+    .mobile-menu a:hover { opacity: 1; }
+
     /* HERO */
     .hero {
       height: 100vh; display: flex; flex-direction: column;
@@ -227,8 +260,9 @@
 
     /* RESPONSIVE */
     @media (max-width: 860px) {
-      nav { padding: 1.4rem 1.5rem; }
-      .nav-links { gap: 1.5rem; }
+      nav { padding: 1.4rem 1.5rem; mix-blend-mode: normal; background: rgba(14,13,11,.6); }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
       .hero { padding: 0 1.5rem 3.5rem; }
       .hero-scroll { display: none; }
       .area { padding: 5rem 1.5rem; }
@@ -240,7 +274,6 @@
       .contact { padding: 5rem 1.5rem; }
     }
     @media (max-width: 480px) {
-      .nav-links { gap: 1rem; }
       .photo-thumbs { grid-template-columns: repeat(3,1fr); }
     }
   </style>
@@ -258,7 +291,18 @@
       <li><a href="#aerea">Aérea</a></li>
       <li><a href="quien-es-tecuani.html">¿Quién es Tecuani?</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#documental" onclick="closeMenu()">Documental</a>
+    <a href="#escenica" onclick="closeMenu()">Escénica</a>
+    <a href="#aerea" onclick="closeMenu()">Aérea</a>
+    <a href="quien-es-tecuani.html" onclick="closeMenu()">¿Quién es Tecuani?</a>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
@@ -366,6 +410,18 @@
   </footer>
 
   <script>
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    function closeMenu() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    }
+
     const cur  = document.getElementById('cur');
     const ring = document.getElementById('cur-ring');
     document.addEventListener('mousemove', e => {
